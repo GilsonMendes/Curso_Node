@@ -1,5 +1,4 @@
 import { ServerResponse } from "http";
-import chalk from 'chalk';
 
 const http = require("http");
 const fs = require("fs");
