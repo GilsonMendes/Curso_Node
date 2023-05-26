@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@types/node": "^20.2.1",
+    "express": "^4.18.2",
+    "inquirer": "^8.1.0",
+    "node-modules": "^1.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "typescript": "^5.0.4"
+  }
+}
