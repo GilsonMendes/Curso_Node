@@ -5,6 +5,9 @@
     "inquirer": "^8.1.0",
     "node-modules": "^1.0.1"
   },
+  "scripts": {
+    "start": "nodemon ./aula01.js localhost 3000"
+  },
   "devDependencies": {
     "nodemon": "^2.0.22",
     "typescript": "^5.0.4"

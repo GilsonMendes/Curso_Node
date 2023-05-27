@@ -62,7 +62,7 @@ function buildAccount() {
         console.log(
           chalk.bgRed.black("Esta conta já existe, escolha outro nome!")
         );
-        buildAccount();
+        buildAccount(accountName);
         return;
       }
       fs.writeFileSync(
@@ -104,7 +104,7 @@ function depositar() {
         .then((answer) => {
           const amount = answer["amount"];
           // add an amount
-          addAmount(accountName, addAmount)
+          addAmount(accountName, amount);
           operation();
         })
         .catch((err) => console.log(err));
@@ -124,7 +124,25 @@ function checkAccount(accountName) {
 
 function addAmount(accountName, amount) {
   const account = getAccount(accountName);
-  console.log(account);
+  if (!amount) {
+    console.log(
+      chalk.bgRed.black("Ocorreu um erro, tente novamente mais tarde!")
+    );
+    return deposit();
+  }
+  accountData.balance = parseFloat(amount) + parseFloat(accountData.balance);
+
+  fs.writeFileSync(
+    `accounts/${accountName}.json`,
+    JSON.stringify(accountData),
+    function (err) {
+      console.log(err);
+    }
+  );
+
+  console.log(
+    chalk.green(`Foi depositado o valor de R$${amount} na sua conta!`)
+  );
 }
 
 function getAccount(accountName) {
