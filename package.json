@@ -2,9 +2,13 @@
   "dependencies": {
     "@types/node": "^20.2.1",
     "inquirer": "^8.1.0",
-    "node-modules": "^1.0.1"
+    "node-modules": "^0.0.1"
   },
   "devDependencies": {
     "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon /index.js localhost 3000"
   }
 }
