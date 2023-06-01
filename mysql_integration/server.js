@@ -1,6 +1,6 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 const app = express();
 
@@ -15,5 +15,15 @@ const conn = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "1234",
-  database: 'mydatabase'
+  database: "mydatabase",
+});
+
+conn.connect(function (err) {
+  if (err) {
+    console.log(err);
+  }
+  console.log("Conectou ao MySql");
+  app.listen(3000, () => {
+    console.log("Servidor rodando.");
+  });
 });
