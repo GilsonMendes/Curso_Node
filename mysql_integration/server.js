@@ -4,6 +4,10 @@ const mysql = require("mysql2");
 
 const app = express();
 
+app.engine("handlebars", exphbs.engine());
+
+app.set("view engine", "handlebars");
+
 app.use(
   express.urlencoded({
     extended: true,
@@ -12,19 +16,22 @@ app.use(
 
 app.use(express.json());
 
-app.engine("handlebars", exphbs.engine());
-
-app.set("view engine", "handlebars");
 
 app.get("/", (req, res) => {
   res.render("home");
 });
 
 app.post("/cliente/cad", (req, res) => {
-  const title = req.body.name;
-  const pageqty = req.body.email;
+  const nome = req.body.nome;
+  const email = req.body.email;
 
   const query = `INSERT INTO CLIENTES(name, email) VALUES ('${nome}', '${email}')`;
+  conn.query(query, function (err) {
+    if (err) {
+      console.log(err);
+    }
+    res.redirect("/");
+  });
 });
 
 const conn = mysql.createConnection({
