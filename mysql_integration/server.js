@@ -21,6 +21,7 @@ const conn = mysql.createConnection({
 conn.connect(function (err) {
   if (err) {
     console.log(err);
+    
   }
   console.log("Conectou ao MySql");
   app.listen(3000, () => {
