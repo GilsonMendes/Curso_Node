@@ -20,11 +20,11 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.post("/books/inserbook", (req, res) => {
-  const title = req.body.title;
-  const pageqty = req.body.pageqty;
+app.post("/cliente/cad", (req, res) => {
+  const title = req.body.name;
+  const pageqty = req.body.email;
 
-  const query = `INSERT INTO CLIENTES(name, email) VALUES ('${nome}', '${email}')`; //revisar
+  const query = `INSERT INTO CLIENTES(name, email) VALUES ('${nome}', '${email}')`;
 });
 
 const conn = mysql.createConnection({
