@@ -16,7 +16,6 @@ app.use(
 
 app.use(express.json());
 
-
 app.get("/", (req, res) => {
   res.render("home");
 });
@@ -31,6 +30,20 @@ app.post("/cliente/cad", (req, res) => {
       console.log(err);
     }
     res.redirect("/");
+  });
+});
+
+app.get("/list", (req, res) => {
+  const query = "SELECT * FROM CLIENTES";
+  conn.query(query, function (err, data) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+
+    const list = data;
+    console.log(list);
+    res.render("list", { list });
   });
 });
 
