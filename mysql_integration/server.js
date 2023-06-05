@@ -33,6 +33,18 @@ app.post("/cliente/cad", (req, res) => {
   });
 });
 
+app.post("/list/del/:id", (req, res) => {
+  const id = req.params.id;
+  const sql = `DELETE FROM  clientes WHERE id = ${id}`;
+  conn.query(sql, function (err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    res.redirect("/list");
+  });
+});
+
 app.get("/list", (req, res) => {
   const query = "SELECT * FROM CLIENTES";
   conn.query(query, function (err, data) {
